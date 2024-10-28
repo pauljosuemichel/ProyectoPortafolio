@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+@media (max-width: 600px) {
+    nav {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+nav a {
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #3498db;
+}

@@ -1,5 +1,5 @@
 from flask import render_template, redirect, url_for, flash
-from app import app, db, bcrypt
+from app import app, db, bcrypt, login_manager
 from app.forms import LoginForm, RegistrationForm
 from app.models import User
 from flask_login import login_user
@@ -40,3 +40,7 @@ def register():
         flash('Account created successfully! You can now log in.', 'success')
         return redirect(url_for('login'))
     return render_template('register.html', form=form)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
